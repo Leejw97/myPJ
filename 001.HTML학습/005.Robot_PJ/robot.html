@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>Robot PJ</title>
     <style>
+        html {
+            scroll-behavior: smooth;
+            /* a요소로 #위치 이동시 스크롤 애니메이션 설정 */
+        }
+
         html, body{
             margin: 0;
             padding: 0;
@@ -65,20 +70,40 @@
             /* 배경위치: 가로 세로 */
             background-size: 160px;
 
+            /* 처음에 로고 2배 크기로 보이게 함 */
+            transform: scale(2);
 
             /* 애니메이션: 이시이지반방마 */
-            animation: logoAni 2s ease-in-out 2s forwards;
+            animation: logoAni 2s ease-in-out 2s forwards,
+            logoAni2 .5s ease-in-out 4s infinite alternate;
         }
 
 
         /* 로볼 페이지 로고 키프레임 */
         @keyframes logoAni {
             /* 시작값은 초기설정값과 같아서 from 생략 */
-            to{
+            80%{
                 top:50px;
                 left:50px;        
+                transform: rotate(0deg);
+            }  
+        100%{
+                top:50px;
+                left:50px;        
+                transform: rotate(-20deg);
+                /* 처음에 흔들기 시작 각도로 셋팅 */
             }
         }
+
+        /* 로고 흔들기 키프레임 */
+        @keyframes logoAni2 {
+            from{
+                transform: rotate(-20deg);
+            }
+            to{
+                transform: rotate(20deg);
+            }
+        } /* 키프레임 */
 
         /************************************************ 
             [ CSS로 애니메이션 하기 ]
@@ -193,7 +218,7 @@
          #nose{
             position: absolute;
             top: 108px;
-            right: 100px;
+            left: 100px;
             /* 부모는? #head */
             width: 50px;
             height: 70px;
@@ -203,8 +228,8 @@
          /* 입 */
          #mouth{
             position: absolute;
-            bottom: 7px;
-            right: 75px;
+            bottom: 9px;
+            right: 74px;
             /* 부모는? #head */
             width: 100px;
             height: 50px;
@@ -281,7 +306,31 @@
             top: -19px;
             right: -50px;
             border-radius: 25px 25px 0 0;
+            transform: rotate(0deg);
+            transform-origin: center 20px;
+
+            /* 애니메이션: 이시이지반방마 */
+            animation: arm2Ani .8s ease-in-out 5s forwards,
+                        waving .4s ease-in-out 5.8s infinite alternate;
         }
+
+        /* 오른쪽팔 애니 키프레임 */
+        @keyframes arm2Ani {
+            to{
+                transform: rotate(-160deg);
+            }
+        } /* 키프레임 */
+
+        /* 오른쪽팔 흔들기 키프레임 */
+        @keyframes waving {
+            from{
+                transform: rotate(-160deg);
+            }
+            to{
+                transform: rotate(-130deg);
+            }
+        } /* 키프레임 */
+
         /* 왼다리 */
         #leg1{
             bottom: -250px;
@@ -312,7 +361,7 @@
             width: 143px;
             height: 104px;
             background-color: #000;
-            border-radius:11px ;
+            border-radius:11px;
             overflow: hidden;
             /* 넘치는 자식요소(아이프레임) 숨기기 */
         }
@@ -350,6 +399,13 @@
 
         /* 로봇설명제목 */
         #rdesc h2{
+            position: sticky;
+            top:0;
+            /* sticky 포지션은 top값에 따라 스크롤시 
+            fixed로 화면에 고정시키는 포지션이다 */
+
+            background-color: rgba(255, 255, 255, 0.4);
+            /* 배경색 반투명처리 */
             color: lime;
             /* 글자색 */
             font-size: 35px;
@@ -402,14 +458,98 @@
             color:lightsalmon;
         }
 
+        /* 글박스 유도 링크 */
+        .link {
+            position: absolute;
+            top: 100px;
+            right: 50px;
+            font-size: 40px;
+            text-shadow: 2px 2px 2px #000;
+        }
+        .link a {
+            color: #fff;
+            text-decoration: none;
+        }
+        /* 오버시 */
+        .link a:hover {
+            color: #f00;
+            text-decoration: underline;
+        }
 
+        /* 위로가기 버튼 */
+        .btnTop {
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            /* fixed는 보이는 화면이 부모다 */
+
+            width: 100px;
+            height: 100px;
+
+            text-align: center;
+            line-height: 100px;
+            border-radius: 50%;
+            background-color: #ccc;
+            color: blue;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* 버튼에 오버시 */
+        .btnTop:hover {
+            background-color: #ff0;
+            color: red;
+        }
+
+        /* 처음에 투명처리 class */
+        .fade{
+            opacity: 0;
+            /* 
+            opacity 속성 - 요소의 투명도 조절
+            0 은 완전 투명, 1은 완전 불투명
+            0.몇 소수점은 중간 투명도
+            예) opacity: 0.5 -> 반투명
+            */
+            /* 애니메이션: 이시이지반방마 */
+            animation: opa .5s ease-in 5s forwards;
+        }
+
+        /* 투명도 변화 키프레임 */
+        @keyframes opa {
+            to {
+                opacity: 1;
+            }
+            
+        } /* 키프레임 */
 
     </style>
 </head>
 <body>
     
     <!-- 로봇 페이지 로고 -->
-    <h1 id = "logo">R2D2</h1>
+    <h1 id="logo">R2D2</h1>
+
+    <!-- 내용보기 링크 타이틀 -->
+    <h2 class="link fade">
+        <a href="#rdesc">What is Robot?</a>
+    </h2>
+    <!-- 
+        a 요소에 href 속성값으로 "#아이디명"을 사용하면
+        같은 페이지 안에 있는 아이디 요소명 박스의 상단
+        라인 위치로 스크롤이동됨(아이디만 됨)
+        -> 만약 href속성값으로 "#아이디명"을 사용한 경우
+        페이지를 이동할때 상단의 url창을 보면
+        "페이지주소#아이디명" 의 형식으로 페이지를 이동한다
+        예) 
+        http://127.0.0.1:5500/001.HTML학습
+                /005.Robot_PJ/robot.html#rdesc
+        -> 역으로 볼때 페이지주소에 #아이디명 을 뒤에 붙여서
+        호출하면 해당 위치로 바로 이동하여 페이지를 보여준다
+     -->
+
+     <!-- 위로 이동버튼 -->
+     <a href="#" class="btnTop fade">TOP</a>
 
     <!-- 로봇머리 -->
     <div id="head">
@@ -425,7 +565,7 @@
         <div id="ear2" class="ear"></div>
         <!-- 입 -->
         <div id="mouth"></div>
-    </div>
+    </div> <!-- #head -->
 
     <!-- 로봇몸통 -->
     <div id="body">
