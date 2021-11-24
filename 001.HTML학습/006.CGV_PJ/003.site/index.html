@@ -12,7 +12,8 @@
         // 자바스크립트 문법구역 //
 
         // 주석 1
-        /* 주석 2 */   /* alt+ shitf+A */ 
+        /* 주석 2 */
+        /* alt+ shitf+A */
 
         // 함수 -> function
         // : 바로 실행하지 않고 호출시에 실행할 코드 저장소
@@ -25,15 +26,14 @@
             // alert("나 불렀어?"+code);
 
             // 전체문서.가져와아이디(아이디명).속성명
-            document.getElementById("ifr").src = 
-            // 이퀄(=) 오른쪽의 값이 왼쪽으로 들어감
-            // 결과적으로 src속성에 변경된 값이 할당
-            "https://www.youtube.com/embed/"
-            +code+
-            "?autoplay=1&playsinline=1";
-        
-        }  // goMv함수 /////////
+            document.getElementById("ifr").src =
+                // 이퀄(=) 오른쪽의 값이 왼쪽으로 들어감
+                // 결과적으로 src속성에 변경된 값이 할당
+                "https://www.youtube.com/embed/" +
+                code +
+                "?autoplay=1&playsinline=1";
 
+        } // goMv함수 /////////
     </script>
 </head>
 
@@ -51,66 +51,78 @@
                     <div class="smenu">
                         <ol>
                             <li>
-                                <a href="">무비차트</a>
+                                <a href="#">무비차트</a>
                             </li>
                             <li>
-                                <a href="">HD 트레일러</a>
+                                <a href="#">HD 트레일러</a>
                             </li>
                             <li>
-                                <a href="">무비파인더</a>
+                                <a href="#">무비파인더</a>
                             </li>
-                            <li>
-                                <a href="">CGV 아트하우스</a>
+                            <li class="bdt">
+                                <a href="#">CGV 아트하우스</a>
                             </li>
                         </ol>
-                    </div>               
+                    </div>
                 </li>
                 <li>
-                    <a href="#">예매</a><div class="smenu">
-                    <div>
-                        <ol>
-                            <li>
-                                <a href="">빠른예매</a>
-                            </li>
-                            <li>
-                                <a href="">상영시간표</a>
-                            </li>
-                        </ol>
-                    </div>                                        
+                    <a href="#">예매</a>
+                    <div class="smenu">
+                        <div>
+                            <ol>
+                                <li>
+                                    <a href="#">빠른예매</a>
+                                </li>
+                                <li>
+                                    <a href="#">상영시간표</a>
+                                </li>
+                            </ol>
+                        </div>
                 </li>
                 <li>
-                    <a href="#">극장</a><div class="smenu">
-                    <div>
-                        <ol>
-                            <li>
-                                <a href="">CGV 극장</a>
-                            </li>
-                            <li>
-                                <a href="">특별관</a>
-                            </li>
-                            <li>
-                                <a href="">CLUB 서비스</a>
-                            </li>
-                        </ol>
-                    </div>                                                          
+                    <a href="#">극장</a>
+                    <div class="smenu">
+                        <div>
+                            <ol>
+                                <li>
+                                    <a href="#">CGV 극장</a>
+                                </li>
+                                <li>
+                                    <a href=#"">특별관</a>
+                                </li>
+                                <li class="bdt">
+                                    <a href="#">CLUB 서비스</a>
+                                </li>
+                            </ol>
+                        </div>
                 </li>
                 <li>
-                    <a href="#">이벤트&amp;컬처</a><div class="smenu">
-                    <div>
-                        <ol>
-                            <li>
-                                <a href="">이벤트</a>
-                            </li>
-                            <li>
-                                <a href="">기프트샵</a>
-                            </li>
-                            <li>
-                                <a href="">매거진</a>
-                            </li>
-                        </ol>
-                    </div>                   
+                    <a href="#">이벤트&amp;컬처</a>
+                    <div class="smenu">
+                        <div>
+                            <ol>
+                                <li>
+                                    <a href="#">이벤트</a>
+                                </li>
+                                <li>
+                                    <a href="#">기프트샵</a>
+                                </li>
+                                <li>
+                                    <a href="#">매거진</a>
+                                </li>
+                            </ol>
+                        </div>
                 </li>
-            </ul>
+            </ul> <!-- ul.glist -->
+            <!-- 영사기박스 -->
+            <aside id="cam">
+                <!-- 영사기 이미지 -->
+                <img src="./images/gnb.png" alt="영사기">
+                <!-- 빔표시박스 -->
+                <div class="bim">
+
+                </div>
+            </aside>
         </nav>
     </header>
     <!-- 2.메인영역 -->
@@ -198,7 +210,32 @@
     </main>
     <!-- 3.하단영역 -->
     <footer id="info" class="part">
+        <!-- 3-1. 회사정보 -->
+        <address>
+            <img src="images/blogo.png" alt="하단로고">
+            (04377)서울특별시 용산구 한강대로 23길 55, 아이파크몰 6층(한강로동) <br>
+            대표이사 : 최병환사업자등록번호 : 104-81-45690통신판매업신고번호 : 2017-서울용산-0662 <br>
+            개인정보보호 책임자 : 정종민대표이메일 : cjcgvmaster@cj.netCGV고객센터 : 1544-1122
+        </address>
 
+        <!-- 3-2. sns메뉴 -->
+        <ul class="sns">
+            <li>
+                <a href="https://www.facebook.com/CJCGV" target="_blank" title="페이스북 바로가기">
+                    <span class="ir">페이스북 바로가기</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://twitter.com/cj_cgv" target="_blank" title="트위터 바로가기">
+                    <span class="ir">트위터바로가기</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/cgv_korea/" target="_blank" title="인스타그램 바로가기">
+                    <span class="ir">인스타그램 바로가기</span>
+                </a>
+            </li>
+        </ul>
     </footer>
 
 </body>

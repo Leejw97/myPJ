@@ -10,7 +10,7 @@ body {
 }
 
 /* 레이아웃 공통 클래스 */
-.part{
+.part {
     max-width: 1200px;
     /* 확장성 있는 셋팅!
     width:1200px로 코딩하면 작은 화면에서는
@@ -20,11 +20,11 @@ body {
     중앙 정렬되게 크기를 유지하다가 작아지면
     화면에 붙어서 auto로 작동함! */
     margin: 0 auto;
-    outline: 3px dotted yellow;
+    /* outline: 3px dotted yellow; */
 }
 
 /*************** 1. 상단영역 ***************/
-#top{
+#top {
     position: relative;
     /* 부모자격 - .gnb */
     height: 80px;
@@ -32,8 +32,9 @@ body {
     z-index: 9999;
     /* GNB 서브메뉴 떄문에 맨위로 올린다 */
 }
+
 /* 1-1.페이지 타이틀 */
-h1.tit{
+h1.tit {
     /* height: 100%; 
     - 안줘도 줄간격이 높이를 만들어줌 */
     color: aquamarine;
@@ -47,15 +48,22 @@ h1.tit{
     /* 그림자를 이용한 Glow효과 */
     text-shadow: 0 0 12px aquamarine;
 }
+
 /* 1-2. 전체메뉴(GNB) */
-.gnb{
+.gnb {
     position: absolute;
     bottom: 10px;
     right: 15px;
-    /* 나의 부모는? #top */    
+    /* 나의 부모는? #top */
 }
+/* 전체메뉴 하위 메뉴박스(glist) */
+.glist{
+    position: relative;
+    z-index: 1;
+}
+
 /* GNB li 리스트 */
-.gnb li{
+.gnb li {
     position: relative;
     /* 부모자격 - .smenu */
     padding: 0 10px;
@@ -72,60 +80,165 @@ h1.tit{
     transform: translateX(-50%);
     /* 내 크기의 절반만큼 반대방향으로 이동 */
 
-    width: 150px;
+    width: 160px;
     /* 앱솔루트 특성상 부모자격이 있는 요소의
     폭에 맞춰서 width: auto가 설정된다
     여기서는 특정 크기를 설정함 */
 
     background: url(../images/bg_smenu.png) no-repeat center/cover;
-    
+
     padding: 3px;
+    margin-top: 5px;
     border-radius: 5px;
     box-shadow: 0 0 5px #fff;
 
+    display: none;
+    /* 처음에 숨기기 */
+}
+
+/* 상위메뉴(.glist)의 li에 오버시 서브메뉴(.smenu) 보이기 */
+.glist>li:hover .smenu {
+    display: block;
 }
 
 /* 서브메뉴 가상요소로 삼각형모양 만들기 */
-.smenu::before{
+.smenu::before {
     content: '';
     display: block;
     position: absolute;
-    top: 0;
+    top: -10px;
     left: 50%;
     /* 부모는 .smenu */
     transform: translateX(-50%);
     /* 가로방향 중앙이동 */
 
-/* 삼각형 만들기 */
-width: 0;
-height: 0;
-border-bottom: 10px solid red;
-/* border-top: 10px solid red; 역삼각형 */
-border-left: 10px solid transparent;
-border-right: 10px solid transparent;
-/* transparent는 투명색 */
-
+    /* 삼각형 만들기 */
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid #353535;
+    /*  삼각형 */
+    /* border-top: 10px solid red; 역삼각형 */
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    /* transparent는 투명색 */
 }
+
 /* 서브메뉴 ol */
-.smenu ol{
+.smenu ol {
     border: 1px solid #ccc;
     padding: 5px;
 }
 
 /* 서브메뉴 li리스트 */
-.smenu li{
+.smenu li {
     font-size: 16px;
     line-height: 2;
+    float: none;
+    /* 플롯해제를 하지 않으면 하나의 width 크기가 
+    내용만큼만 생기므로 이를 해제하여 패딩안쪽까지만
+    잡히는 width : auto 설정이 적용되게 한다 
+    왜했나? 보더탑 선 길이 때문에*/
 }
 
-/* 임시로 첫번째만 빼고 나머지 서브메뉴 숨기기 */
-.gnb >ul>li:first-child~li .smenu{
-    display: none;
+/* 서브메뉴 li중 보더탑 디자인용 class */
+.bdt {
+    border-top: 1px solid #ccc;
+    padding-top: 5px !important;
+    /* 패딩탑은 위에서 패딩설정에 의해 우선순위가
+    밀려서 적용이 안되므로 최종 적용만을 목적으로
+    매우 제한적으로 !important를 주어서 무조건 적용함 */
 }
 
+/* 서브메뉴 a */
+.smenu a {
+    display: block;
+    white-space: nowrap;
+    /* 내용이 무조건 한줄에 모두 나옴(줄바꿈금지) */
+}
+
+/* 서브메뉴 a에 오버시  */
+.smenu a:hover {
+    color: red;
+}
+
+/* 서브메뉴 오버시 가상요소로 빨간손가락 보이기 */
+.smenu a:hover::after {
+    content: url(../images/ico_smenu_hand.png);
+    float: right;
+    /* 손가락 이미지가 인라인으로 오른쪽 끝에 옴 */
+}
+
+/* 영사기 박스 */
+#cam {
+    position: absolute;
+    bottom: -14px;
+    right: -52px;
+    /* 부모는? .gnb */
+}
+
+/* 영사기 이미지 */
+#cam img {
+    position: relative;
+    z-index: 1;
+    /* 포지션이 있어야 z-index가 적용됨(영사기가 빔보다 위) */
+    width: 50px;
+
+    /* 영사기 회전 */
+    transform: rotate(25deg);
+
+    /* 트랜지션: 속시이지 */
+    transition: transform  .5s .3s;
+      /* 원상복귀시 빔이 없어지는 0.3초 기다림 */
+}
+/* .gnb에 마우스 오버시 영사기 회전수평각 */
+.gnb:hover #cam img {
+    transform: rotate(0deg);
+    transition-delay: 0s;
+    /* 처음에는 기다리지 않고 바로 실행 */
+}
+
+/* 빔박스 */
+.bim {
+    position: absolute;
+    top: -16px;
+    right: 6px;
+    /* 나의 부모는? #cam */
+    width: 0px; /* 오버시 200px */
+    height: 70px;
+    background: url(../images/bim.png) no-repeat;
+    background-position: right center;
+    /* 배경포지션은 가로 오른쪽 끝에 붙이고 세로방향 중간 */
+    background-size: auto 100%;
+    /* 배경이미지 박스 높이값에 맞춤 */
+
+    /* outline: 2px dotted greenyellow; */
+
+    /* 트랜지션: 속시이지 */
+    transition: width .3s linear;
+}
+/* gnb에 마우스 오버시 빔쏘기 애니 */
+.gnb:hover .bim {
+    width: 200px;
+    transition-delay: .5s;    
+    /* 원본에 없는 지연시간설정
+    영사기가 도는동안 기다림 */
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: bimAni .04s linear infinite alternate;
+}
+
+/* 빔이 너울어울 거리도록 애니메이션 프레임 */
+@keyframes bimAni {
+    from{
+        opacity: 0.9;
+    }
+    to{
+        opacity: 0.5;
+    }
+} /* 키프레임 */
 
 /*************** 2. 메인영역 ***************/
-#cont{
+#cont {
     position: relative;
     /* 부모자격 - 하위요소 */
     /* height: 788px; */
@@ -134,16 +247,18 @@ border-right: 10px solid transparent;
     background-size: 100%;
     /* 배경이미지 가로를 기준으로 비율변경 */
 }
+
 /* 2-1.스크린박스 */
 #screen {
     position: absolute;
-    top: 17%;
-    left: 21%;
+    top: 17.2%;
+    left: 21.3%;
     /* 나의 부모는? #cont */
-    width: 59%;
-    height: 51%;
+    width: 58.6%;
+    height: 50.6%;
     background-color: #000;
 }
+
 /* 스크린 아이프레임 */
 #screen iframe {
     width: 100%;
@@ -151,8 +266,9 @@ border-right: 10px solid transparent;
     border: none;
     /* 기본보더 없앰 */
 }
+
 /* 2-2.예고편선택메뉴 */
-.mlist{
+.mlist {
     position: absolute;
     bottom: 6%;
     left: 50%;
@@ -162,8 +278,9 @@ border-right: 10px solid transparent;
     width: 60%;
     /* outline: 4px dashed yellow; */
 }
+
 /* li디자인 */
-.mlist ul>li{
+.mlist ul>li {
     position: relative;
     /* 부모자격! */
     width: 14.66%;
@@ -173,19 +290,21 @@ border-right: 10px solid transparent;
     overflow: hidden;
     /* .movtxt의 부모자격요소에 줘야 적용됨 */
 }
+
 /* 포스터 이미지 */
-.mlist img{
+.mlist img {
     width: 100%;
     /* 가로만 li박스에 채움
     세로는 자동으로 비율유지함 */
 }
 
 /* 영화정보박스 */
-.movtxt{
+.movtxt {
     position: absolute;
     /* left는 설정하지 않고 젠틀하게 처리함
     -> 각 li위치에 그대로 있음 */
-    top: 100%; /* 아래쪽에 나가있음 */
+    top: 100%;
+    /* 아래쪽에 나가있음 */
     /* 나의 부모는? .mlist ul>li */
     width: 100%;
     height: 100%;
@@ -202,9 +321,10 @@ border-right: 10px solid transparent;
     /* 트랜지션: 속시이지 */
     transition: top .4s ease-in-out;
 }
+
 /* 상위li에 오버시 .movtxt 올라오기 */
-.mlist>ul>li:hover .movtxt{
-    top:0;
+.mlist>ul>li:hover .movtxt {
+    top: 0;
 }
 
 /* 영화정보 li */
@@ -212,6 +332,7 @@ border-right: 10px solid transparent;
     float: none;
     /* float해제 */
 }
+
 /* 첫번째 li는 영화제목 */
 .movtxt li:first-child {
     color: aqua;
@@ -221,6 +342,64 @@ border-right: 10px solid transparent;
 }
 
 /*************** 3. 하단영역 ***************/
-#info{
+#info {
+    position: relative;
+    /* 부모자격 - .sns */
     height: 100px;
+}
+/* 3-1. 회사정보박스 */
+#info address{
+    color: #fff;
+    font-style: normal;
+    /* 기본 이탤릭 없앰 */
+    font-family: 'Cute Font', cursive;
+    font-size: 18px;
+    line-height: 20px;
+
+    /* 안쪽여백 */
+    padding-top: 20px;
+    padding-left: 20px;
+}
+/* 하단로고 이미지 */
+#info img { 
+    float:left;
+    /* 이미지는 왼쪽에 글자는 오른쪽으로 흐르게 */
+    margin-right: 20px;
+}
+/* 3-2. sns버튼 */
+.sns{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    /* 부모는? #info */
+}
+/* sns li 박스 */
+.sns li {
+    width: 34px;
+    height: 34px;
+    /* 배경이미지 넣기(sprites) */
+    background: url(../images/sprites_logo.png);
+
+    margin: 2px;
+
+    /* outline: 2px dotted lime; */
+}
+/* 페이스북 */
+.sns li:first-child {
+    background-position: -510px -429px;
+}
+/* 페이스북 */
+.sns li:nth-child(2) {
+    background-position: -551px -429px;
+}
+/* 페이스북 */
+.sns li:last-child {
+    background-position: -593px -429px;
+}
+
+/* sns a요소 확장 */
+.sns a {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
