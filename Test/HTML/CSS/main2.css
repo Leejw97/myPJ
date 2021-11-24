@@ -218,30 +218,12 @@ h1.logo {
   transition: height 0.4s ease-in-out;
 }
 
-/* 모바일용 햄버거 버튼 */
-.ham {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-
-  width: 50px;
-  height: 70px;
-  font-size: 40px;
-
-  border: none;
-  background-color: transparent;
-
-  display: none;
-
-  /* 버튼 기본 보더, 배경색 없애기 */
-}
-
 /****** 2. 컨텐츠영역 ******/
 .cont {
   min-height: 800px;
 }
 
-/* 2-1. 캐릭터 박스 */
+/* 2-1. 향수 박스 */
 #cbx {
   position: relative;
   /* absoulte가 아닌 relative를 쓴 이유는?
@@ -272,7 +254,7 @@ h1.logo {
   clear: both;
 }
 
-/* 캐릭터박스 공통 */
+/* 향수박스 공통 */
 .cat {
   width: 25%;
   /* 4등분 */
@@ -293,19 +275,19 @@ h1.logo {
   transition: margin-top 0.6s ease-out;
 }
 
-/* 캐릭터 박스에 오버시 마진탑 변경하기 */
+/* 향수 박스에 오버시 마진탑 변경하기 */
 .cat:hover {
   margin-top: -13%;
 }
 
-/* 캐릭터 이미지 */
+/* 향수 이미지 */
 .ci > img {
   /* 직계자식(>) 이미지만 선택 */
   width: 100%;
   /* 이미지의 height는 자동(비율유지) */
 }
 
-/* 캐릭터 이름 */
+/* 향수 이름 */
 .ci span {
   display: block;
   /* 블록으로 변경 */
@@ -316,28 +298,28 @@ h1.logo {
     마진도 상대적으로 변경되게 함  */
 }
 
-/*캐릭터 이름 이미지*  */
+/*향수 이름 이미지*  */
 ci.span img {
   width: 100%;
 }
 
-/* 캐릭터 이름 첫번째 이미지 숨기기 */
+/* 향수 이름 첫번째 이미지 숨기기 */
 .ci span img:first-child {
   display: none;
 }
 
 /* .cat박스에 마우스 오버시 */
-/*  캐릭터 이름 첫번째 이미지 보이기 */
+/*  향수 이름 첫번째 이미지 보이기 */
 .cat:hover .ci span img:first-child {
   display: inline;
 }
 
-/*  캐릭터 이름 마지막 이미지 숨기기 */
+/*  향수 이름 마지막 이미지 숨기기 */
 .cat:hover .ci span img:last-child {
   display: none;
 }
 
-/* 캐릭터 설명박스 */
+/* 향수 설명박스 */
 .cd {
   height: 0px;
   /* .cat에 오버시 250px로 변경*/
@@ -357,14 +339,14 @@ ci.span img {
   height: 250px;
 }
 
-/* 캐릭터 설명 타이틀 */
+/* 향수 설명 타이틀 */
 .cd h3 {
   font-family: "Dongle", sans-serif;
   padding: 5px 10px 0px;
   /* 패딩 : 위 양쪽 아래 */
 }
 
-/* 캐릭터 설명 문단 */
+/* 향수 설명 문단 */
 .cd p {
   font-family: "Nanum Brush Script", cursive;
   font-size: 21px;
