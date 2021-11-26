@@ -6,7 +6,8 @@
 @import url(core.css);
 
 /* 비디오요소 */
-html, body{
+html,
+body{
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -35,6 +36,7 @@ html, body{
     /* 비디오의 밝기를 어둡게 조정하여
     입장버튼이 잘보이게함 */
 }
+
 /* 들어가기 버튼박스 */
 #enter {
     position: absolute;
@@ -44,6 +46,7 @@ html, body{
     transform: translate(-50%, -50%);
     /* 정중앙으로 이동하기 */
 }
+
 /* Click Here 글자박스 */
 #enter span{
     display: block;
@@ -56,6 +59,7 @@ html, body{
     /* 트랜지션: 속시이지 */
     transition: all .4s ease-out .2s;
 }
+
 /* 엔터박스에 마우스 오버시 글자박스 */
 #enter:hover span{
     transform: scale(2);
@@ -63,14 +67,26 @@ html, body{
 }
 
 
- /* 로고 이미지 */
+/* 로고 이미지 */
  #enter img{
      /* 트랜지션 : 속시이지 */
      transition: transform .4s ease-out;
  }
+
 /* 엔터박스에 오버시 로고 이미지 변경 */
 #enter:hover img{
     transform: rotate(-15deg) scale(1.5);
     /* 반시계방향 15도 회전+ 1.5배확대 */
 }
 
+
+/******************** 600px 이하 시작  ********************/
+@media screen and (max-width: 600px){
+
+    /* Click Here 글자박스 */
+    #enter span {
+        font-size: 8vw;
+    }
+
+}
+    /********************* 600px이하 끝 *********************/
