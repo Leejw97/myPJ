@@ -71,3 +71,68 @@ ul.glist>li {
 }
 
  /********************* 7800px이하 끝 *********************/
+
+
+  /********************* 모바일파트 *********************/
+
+    /********************* 600px이하 시작 *********************/
+ @media screen and (max-width: 600px){
+
+    /* 1. 타이틀 글자크기 */
+    h1.tit{
+        font-size: 30px;
+    }
+
+    /* 2. 메인 영역 - 50vh */
+    .rbx::before {
+        padding-top: calc(100vh - 230px);
+        /* 보이는 화면높이 100%에서 상단
+        상단(80px)+하단(150px)를 뺀 나머지 높이 설정 */
+    }
+
+    /* 3. 메인박스 배경 */
+    #cont {
+        background-size: 500px;
+        background-position: center top;
+    }
+
+    /* 4. 스크린 위치, 위치 맞추기 */
+    #screen {
+        top: 56px;
+        left: 50%;
+        transform: translateX(-50%);
+        /* 가로중앙이동 */
+        width: 299px;
+        height: 167px;        
+    }
+
+    /* 5. 예고편 선택메뉴박스 */
+    .mlist {
+        width: 100%;
+    }
+
+    /* 6. 영화정보박스 */
+    .movtxt {
+    font-size: 2vh;
+        line-height: 4vw;
+    }
+
+    /* 7. 첫번째 li는 영화제목 */
+    .movtxt li:first-child{
+     font-size: 3vw;
+    margin-top: 4vw;
+    }
+  
+    /* 8. 하단 영역 -150px */
+    #info {
+        height: 150px;
+    }
+
+    /* 9. 하단주소만 없애기 */
+    #info address span{
+        display: none;
+    }
+
+ }
+ 
+  /********************* 600px이하 끝 *********************/
