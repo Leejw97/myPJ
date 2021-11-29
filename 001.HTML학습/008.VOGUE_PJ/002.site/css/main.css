@@ -68,48 +68,51 @@ body * {
     height: 100%;
     /* 내부박스 높이채우기 */
 }
+
 /* 3개로 구성되는 컨텐츠박스 */
-.pt2 .cbx {
-    float: left;
-    /* 옆으로 흐르게 */
-    width: 33.33%;
-    /* 3등분하기 */
+/* flex적용하기! */
+.fbx{
+    display: flex;
+}
+.fbx>.cbx {
+    flex: 1;
+    /* 등분할설정! */
 }
 
 /* 공통 배경설정 */
-.bgi {
+.bgi{
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 /* 개별배경이미지 */
 
-/* 컨텐츠 1 - 1개 */
-.bg1 {
+/* 컨텐츠1 - 1개 */
+.bg1{
     background-image: url(../images/cont1a.jpg);
 }
-/* 컨텐츠 2 - 3개 */
-.bg2 {
+/* 컨텐츠2 - 3개 */
+.bg2{
     background-image: url(../images/cont2-1.jpg);
 }
-.bg3 {
+.bg3{
     background-image: url(../images/cont2-2.jpeg);
 }
-.bg4 {
+.bg4{
     background-image: url(../images/cont2-3.jpg);
 }
 /* 컨텐츠3 - 1개 */
-.bg5 {
+.bg5{
     background-image: url(../images/cont3a.jpg);
 }
-/* 컨텐츠4 -3개 */
-.bg6 {
+/* 컨텐츠4 - 3개 */
+.bg6{
     background-image: url(../images/cont4-1.jpg);
 }
-.bg7 {
+.bg7{
     background-image: url(../images/cont4-2.jpg);
 }
-.bg8 {
+.bg8{
     background-image: url(../images/cont4-3.jpg);
 }
 /* 컨텐츠5 - 1개 */
@@ -136,8 +139,6 @@ body * {
 .bg15{
     background-image: url(../images/cont7-3.jpg);
 }
-
-
 
 
 /******************* 1. 상단영역 *******************/
