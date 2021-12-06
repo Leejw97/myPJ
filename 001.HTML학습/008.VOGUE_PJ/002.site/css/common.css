@@ -8,12 +8,17 @@
 /******************* 1. 상단영역 *******************/
 /* 겉박스 */
 #top {
-    box-shadow: 0 2px 2px rgba(0 0 0 / 0.12);
+    position: relative;
+    /* z-index적용위해! */
+
+    box-shadow: 0 2px 2px rgb(0 0 0 / 12%);
     /* 
         [ rgba 색상 표기법 2가지 스타일 ]
         rgba(0, 0, 0, 0.12)
-        rgba(0 0 0 / 0.12)
+        rgb(0 0 0 / 12%) -> 마지막 %는 투명도(알파값)
     */
+    z-index: 9999;
+    /* 가장위 - 아래 #cont박스에 그림자가 덮임! */
 }
 .top {
     min-height: 206px;
@@ -213,6 +218,26 @@
     color: red;
 }
 
+/******************* 모바일 메뉴 *******************/
+/* 햄버거 버튼 */
+.ham{
+    position: absolute;
+    top: 25px;
+    left: 11px;
+    font-size: 28px;
+    font-weight: bold;
+    transform: scaleX(1.4);
+    line-height: 0;
+}
+/* 돋보기 버튼 */
+.mag{
+    position: absolute;
+    top: 25px;
+    right: 11px;
+    line-height: 0;
+    font-weight: bold;
+    transform: scale(1.2);
+}
 
 /******************* 3. 하단영역 *******************/
 .info {
