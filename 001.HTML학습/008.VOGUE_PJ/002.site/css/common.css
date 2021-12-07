@@ -242,9 +242,108 @@
     display: none;
     /* 처음에 안보임 */
 }
-/* 모바일메뉴박스 */
+/* 모바일용 메뉴를 모두 포함하는 부모박스 */
+.mowrap{
+    height: 0;
+    overflow: hidden;
+    /* 내용을 완벽하게 숨겼다가 보여주는
+    박스에는 위아래 패딩이 없어야한다 */
+}
+/* 1-5. 모바일용 메뉴 */
 #mobx{
-    display: none;
+    padding-left: 15px;
+    padding-top: 6px;
+    padding-bottom: 30px;
+    /* display: none; */
+}
+/* 1-5-1. 모바일 GNB메뉴 */
+.mognb{
+    padding-left: 15px;
+}
+.mognb a{
+    font-family: "Roboto";
+    font-size: 25px;
+    line-height: 2;
+    color: #333;
+}
+/* 1-5-2. 모바일 SNS메뉴 */
+.mosns{
+    margin-top: 24px;
+    margin-left: 13px
+}
+.mosns a{
+    display: inline-block;
+    /* .fi에 들어가 있지만 마지막 a요소 때문에 줌 */
+    vertical-align: top;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #d2d2d2;
+    border-radius: 50%;
+    margin: 0 2px 10px;
+    /* 마진: 위 양쪽 아래 */
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+}
+/* 트위터 아이콘 박스 */
+.mosns a.fi-twitter{
+    font-size: 16px;
+}
+/* 유튜브 아이콘 박스 */
+.mosns a.fi-youtube.-play{
+    font-size: 15px;
+}
+/* .mosns 마지막 a요소에 카스아이콘 넣기 */
+.mosns a:last-child{
+    background: url(../images/sns_kakao.png)
+    no-repeat center/auto 50%;
+}
+
+/* 1-5-3. 매거진 박스 */
+.magbox{
+    margin: 0;
+    padding: 10px 30px 0 15px;
+    font-family: NanumBarunGothic;
+}
+/* 잡지 커버 이미지 */
+.magbox img{
+    width: 100%;
+}
+/* 잡지설명 */
+.magbox figcaption{
+    font-size: 13px;
+    line-height: 3;
+    color: #222;
+}
+/* 정기구독버튼 */
+.magbtn{
+    font-size: 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    width: 100%;
+    font-weight: bold;
+    padding: 5px 0;
+}
+
+/* 1-5-4. 하단링크박스 */
+.moblink{
+    display: flex;
+    margin-left: 15px;
+    line-height: 3.5;
+    font-size: 15px;
+    letter-spacing: -1px;
+
+}
+.moblink li+li{ /* 2번쨰 li부터 */
+    padding-left: 7px;
+}
+.moblink a{
+    color: #222;
+}
+/* 마지막 li만 두꺼운 글자 */
+.moblink li:last-child a{
+    font-weight: bold;
 }
 
 
