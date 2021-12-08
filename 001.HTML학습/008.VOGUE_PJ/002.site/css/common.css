@@ -242,12 +242,64 @@
     display: none;
     /* 처음에 안보임 */
 }
+
+/* 1-5. 모바일용 검색박스 */
+.mos{
+    position: relative;
+    /* 부모자격 */
+    height: 0;/* 50px; */
+    overflow: hidden;
+    /* 처음에 숨기기 */
+}
+/* 검색내부 검정박스 */
+.mwrap{
+    position: absolute;
+    top: 7px;
+    bottom: 7px;
+    left: 30px;
+    right: 30px;
+    /* 부모박스기준 박스당기기(양쪽방향) 
+    -> 유동적인 가로크기가 생성됨! */
+    height: 36px;
+    /* 높이값은 정해줌 */
+    background-color: #000;
+}
+/* 검색입력창 */
+#search{
+    position: absolute;
+    top: 2px;
+    bottom: 8px;
+    left: 2px;
+    right: 49px;
+    /* 부모는? .mwrap */
+}
+/* 입력요소 input */
+#search input{
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    /* 입력글자 왼쪽여백 */
+}
+/* 모바일 검색버튼 */
+.scbtn{
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+}
+
 /* 모바일용 메뉴를 모두 포함하는 부모박스 */
 .mowrap{
     height: 0;
     overflow: hidden;
     /* 내용을 완벽하게 숨겼다가 보여주는
-    박스에는 위아래 패딩이 없어야한다 */
+    박스에는 위아래 패딩이 없어야한다! */
 }
 /* 1-5. 모바일용 메뉴 */
 #mobx{
@@ -256,7 +308,7 @@
     padding-bottom: 30px;
     /* display: none; */
 }
-/* 1-5-1. 모바일 GNB메뉴 */
+/* 1-5-1.모바일 GNB메뉴 */
 .mognb{
     padding-left: 15px;
 }
@@ -266,14 +318,14 @@
     line-height: 2;
     color: #333;
 }
-/* 1-5-2. 모바일 SNS메뉴 */
+/* 1-5-2.모바일 sns메뉴 */
 .mosns{
-    margin-top: 24px;
-    margin-left: 13px
+    margin-top: 44px;
+    margin-left: 13px;
 }
 .mosns a{
     display: inline-block;
-    /* .fi에 들어가 있지만 마지막 a요소 때문에 줌 */
+    /* .fi에 들어가 있지만 마지막 a요소때문에 줌  */
     vertical-align: top;
     width: 42px;
     height: 42px;
@@ -290,22 +342,21 @@
     font-size: 16px;
 }
 /* 유튜브 아이콘 박스 */
-.mosns a.fi-youtube.-play{
+.mosns a.fi-youtube-play{
     font-size: 15px;
 }
 /* .mosns 마지막 a요소에 카스아이콘 넣기 */
 .mosns a:last-child{
-    background: url(../images/sns_kakao.png)
-    no-repeat center/auto 50%;
+    background: url(../images/sns_kakao.png) no-repeat center/auto 50%;
 }
 
-/* 1-5-3. 매거진 박스 */
+/* 1-5-3.매거진 박스 */
 .magbox{
     margin: 0;
     padding: 10px 30px 0 15px;
-    font-family: NanumBarunGothic;
+    font-family: 'NanumBarunGothic';
 }
-/* 잡지 커버 이미지 */
+/* 잡지커버이미지 */
 .magbox img{
     width: 100%;
 }
@@ -326,7 +377,7 @@
     padding: 5px 0;
 }
 
-/* 1-5-4. 하단링크박스 */
+/* 1-5-4.하단링크박스 */
 .moblink{
     display: flex;
     margin-left: 15px;
@@ -335,16 +386,18 @@
     letter-spacing: -1px;
 
 }
-.moblink li+li{ /* 2번쨰 li부터 */
+.moblink li+li{/* 2번째 li부터 */
     padding-left: 7px;
 }
 .moblink a{
     color: #222;
 }
-/* 마지막 li만 두꺼운 글자 */
+/* 마지막 li만 두꺼운글자 */
 .moblink li:last-child a{
     font-weight: bold;
 }
+
+
 
 
 
