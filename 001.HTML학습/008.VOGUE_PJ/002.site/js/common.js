@@ -6,17 +6,43 @@ window.addEventListener("scroll", ()=>{
     // 스크롤 위치값
     let scTop = this.scrollY;
     // scrollY - 세로축 스크롤 위치값 리턴
+    // this는 화살표함수에서 window를 나타냄
+
+    /******************************************* 
+        윈도운 세로 스크롤 위치값을 가져오는 방법
+        1. this.scrollY
+        2. window.scrollY
+        3. ument.scrollingElement.scrollTop
+        4. document.documentElement.scrollTop
+        5. document.querySelector("html").scrollTop;
+    *******************************************/
 
     console.log("스크롤중",scTop);
 
+    ///// 스크롤위치값이 100이상일 때 /////
+    if(scTop>=100){ // 100px이상
+        document.querySelector("#top")
+        .classList.add("on")
+    } ///////////////// if /////////////////
+    else{ // 100px 미만
+        document.querySelector("#top")
+        .classList.remove("on")
+    } ////// else ///////
+
 }); //////////// scroll 이벤트함수 ///////////
 /////////////////////////////////////////////
+
+// 상단영역요소 전역변수
+let top;
 
 //////////// 로딩구역 /////////////////////////
 window.addEventListener("DOMContentLoaded",
 function(){
 
     console.log("로딩완료!");
+
+    // 전역변수 요소할당
+    top = document.querySelector("#top");
 
     //////////////////////////////////////////
     // 1. 햄버거 버튼 클릭시 //////////////////
