@@ -503,8 +503,8 @@ html{
 /* 위로가기 버튼 */
 .tbtn{
     position: fixed;
-    bottom: -35px; 
-    /* 아래쪽 바깥에 나가있음 */
+    bottom: -35px;
+    /* 아래쪽 바깥에 나가있음! */
     right: 75px;
     width: 48px;
     height: 35px;
@@ -515,8 +515,7 @@ html{
     /* 둥근모서리: 왼위 오른위 오른아래 왼아래 */
     color: #fff;
     z-index: 9999;
-    opacity: 0; /* 투명하게 */
-    display: none; /* 숨기기 */
+    opacity: 0;/* 투명하게 */
 
     /* 트랜지션: 속시이지 */
     transition: opacity .3s,
@@ -524,10 +523,9 @@ html{
 
 }
 /* 위로이동버튼에 .on주기 */
-.tbtn.on{
+.tbtn.on {
     bottom: 0;
     opacity: 1;
-    transition: opactiy .3s;
 }
 /* 탑버튼 마우스 오버시 */
 .tbtn:hover {
