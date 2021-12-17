@@ -120,7 +120,8 @@ body {
     text-align: center;
     font-weight: bold;
     border-radius: 20px;
-
+    white-space: nowrap;
+    /* 줄바꿈방지 */
 }
 
 @keyframes runMi {

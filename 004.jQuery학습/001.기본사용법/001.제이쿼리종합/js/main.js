@@ -201,7 +201,7 @@ $(function () { ////////// jQB ///////////////////////////
 
         // 3. 이동위치
         // 대상: 7번방
-        let tg = bd.eq(7)
+        let tg = bd.eq(7);
         let tgtop = tg.offset().top;
         let tgleft = tg.offset().left + win5;
 
@@ -249,38 +249,38 @@ $(function () { ////////// jQB ///////////////////////////
 
         // 3. 이동위치
         // 대상: 6번방
-        let tg = bd.eq(6)
+        let tg = bd.eq(6);
         let tgtop = tg.offset().top;
         let tgleft = tg.offset().left + win5;
 
         // 4. 위치이동
         mi.animate({
-            top: tgtop + "px",
-            left: tgleft + "px"
-        },1000,"easeInOutElastic", // 이징
-        function(){ //콜백함수
+                top: tgtop + "px",
+                left: tgleft + "px"
+            }, 1000, "easeInOutElastic", // 이징
+            function () { //콜백함수
 
-            // 5. 메시지 보이기
-            msg.text("여긴 없겠지?")
-            .delay(500).fadeIn(200);
+                // 5. 메시지 보이기
+                msg.text("여긴 없겠지?")
+                    .delay(500).fadeIn(200);
 
-            // 6. 다음 메시지 : 2초후 변경
-            setTimeout(() => {
+                // 6. 다음 메시지 : 2초후 변경
+                setTimeout(() => {
 
-                msg.html("그래도 무서우니까<br>위층으로 가자!")
+                    msg.html("그래도 무서우니까<br>위층으로 가자!")
 
-                // 7. 다음 버튼 보이기 : '무서우니 윗층으로'
-                btns.eq(4).fadeIn(200);
+                    // 7. 다음 버튼 보이기 : '무서우니 윗층으로'
+                    btns.eq(4).fadeIn(200);
 
-            }, 2000); // setTimeout
+                }, 2000); // setTimeout
 
-        }); // animate
+            }); // animate
 
     }); //3-4. '다시 옆방으로' 버튼 click 끝
 
     // 3-5. '무서우니 윗층으로' 버튼 클릭시
-    btns.eq(4).click(function(){
-        console.log($(this).text(),"버튼");
+    btns.eq(4).click(function () {
+        console.log($(this).text(), "버튼");
 
         // 1. 자기자신 버튼 없애기
         $(this).slideUp(200);
@@ -289,174 +289,195 @@ $(function () { ////////// jQB ///////////////////////////
         msg.fadeOut(200);
 
         // 3. 이동위치
-         // 대상: 4번방
-         let tg = bd.eq(4)
-         let tgtop = tg.offset().top;
-         let tgleft = tg.offset().left + win5;
+        // 대상: 4번방
+        let tg = bd.eq(4);
+        let tgtop = tg.offset().top;
+        let tgleft = tg.offset().left + win5;
 
-         // 4. 위치이동
-         mi.animate({
-             top: tgtop + "px",
-             left: tgleft + "px"
-         },1000,"easeOutElastic",
-         function(){ // 콜백함수
-            // 5. 메시지 보이기
-            msg.empty() // empty() 선택요소 텍스트 지우기
-          .delay(1000)
-            .fadeIn(200,()=>{msg.text("무")})
-            .delay(500).fadeIn(200,()=>{msg.text("무.")})
-            .delay(500).fadeIn(200,()=>{msg.text("무.서")})
-            .delay(500).fadeIn(200,()=>{msg.text("무.서.")})
-            .delay(500).fadeIn(200,()=>{msg.text("무.서.워")})
-            .delay(500).fadeIn(200,()=>{msg.text("무.서.워.")})
-            .delay(500).fadeIn(200,()=>{msg.text("무.서.워..")})
-            .delay(500).fadeIn(200,()=>{msg.text("무.서.워...")})
-            .delay(1500) .fadeIn(200,()=>{// 콜백함수
+        // 4. 위치이동
+        mi.animate({
+                top: tgtop + "px",
+                left: tgleft + "px"
+            }, 1000, "easeOutElastic",
+            function () { // 콜백함수
+                // 5. 메시지 보이기
+                msg.empty() // empty() 선택요소 텍스트 지우기
+                    .delay(1000)
+                    .fadeIn(200, () => {
+                        msg.text("무")
+                    })
+                    .delay(500).fadeIn(200, () => {
+                        msg.text("무.")
+                    })
+                    .delay(500).fadeIn(200, () => {
+                        msg.text("무.서")
+                    })
+                    .delay(500).fadeIn(200, () => {
+                        msg.text("무.서.")
+                    })
+                    .delay(500).fadeIn(200, () => {
+                        msg.text("무.서.워")
+                    })
+                    .delay(500).fadeIn(200, () => {
+                        msg.text("무.서.워.")
+                    })
+                    .delay(500).fadeIn(200, () => {
+                        msg.text("무.서.워..")
+                    })
+                    .delay(500).fadeIn(200, () => {
+                        msg.text("무.서.워...")
+                    })
+                    .delay(500).fadeIn(200, () => { // 콜백함수
 
-                // 6. 좀비 달려오기
-                // -> 7번방 좀비 : bd.eq(7).find(".mz")
-                bd.eq(7).find(".mz")
+                        // 6. 좀비 달려오기
+                        // -> 7번방 좀비 : bd.eq(7).find(".mz")
+                        bd.eq(7).find(".mz")
 
-                // 6-1. 윗층으로 올라오기
-                .animate({
-                    bottom: tg.height() + "px"
-                    //  -tg.height() -> li의 높이만큼 위로 올라옴
-                },500,"easeOutElastic")
+                            // 6-1. 윗층으로 올라오기
+                            .animate({
+                                bottom: tg.height() + "px"
+                                //  -tg.height() -> li의 높이만큼 위로 올라옴
+                            }, 500, "easeOutElastic")
 
-                // 6-2. 주인공에게 달려오기
-                .animate({
-                    right: tg.width()*1.2 + "px"
-                    // 가로크기만큼 right값주기(보정)
-                },2000,"easeOutBounce",()=>{ // 좀비온후
+                            // 6-2. 주인공에게 달려오기
+                            .animate({
+                                right: tg.width() * 1.2 + "px"
+                                // 가로크기만큼 right값주기(보정)
+                            }, 2000, "easeOutBounce", () => { // 좀비온후
 
-                    // 7. 주인공 사색되기 (흑백처리)
-                    mi.css({
-                        filer: "grayscale(100%)"
-                    });
-                    
-                    // 8. 메시지 지우기
-                    msg.hide();
+                                // 7. 주인공 사색되기 (흑백처리)
+                                mi.css({
+                                    filter: "grayscale(100%)"
+                                });
 
-                    // 9. 2초뒤에 좀비되기
-                    setTimeout(()=>{
+                                // 8. 메시지 지우기
+                                msg.hide();
 
-                        // 9-1. 좀비 이미지변경
-                        mi.find("img")
-                        .attr("src","images/mz1.png");
-                        // attr(속성명,속성값)
-                        // -> 속성값 바꾸는 메소드
-                        // JS의 setAttribute와 유사
-                        // 참고) attr(속성명) -> 속성값 가져오기
-                        // -> getAttribute와 유사
+                                // 9. 2초뒤에 좀비되기
+                                setTimeout(() => {
 
-                        // 9-2. 좀비메시지
-                        msg.html("나도 좀비!;;;<br>어서 치료주사를")
-                        .css({left:"100%"}) // 메시지 위치변경
-                        .fadeIn(400); // 메시지 나타나기
+                                    // 9-1. 좀비 이미지변경
+                                    mi.find("img")
+                                        .attr("src", "images/mz1.png");
+                                    // attr(속성명,속성값)
+                                    // -> 속성값 바꾸는 메소드
+                                    // JS의 setAttribute와 유사
+                                    // 참고) attr(속성명) -> 속성값 가져오기
+                                    // -> getAttribute와 유사
 
-                        // 10. 다음버튼 보이기 : '치료주사방으로'
-                        btns.eq(5).slideDown(300);
+                                    // 9-2. 좀비메시지
+                                    msg.html("나도 좀비!;;;<br>어서 치료주사를")
+                                        .css({
+                                            left: "100%"
+                                        }) // 메시지 위치변경
+                                        .fadeIn(400); // 메시지 나타나기
 
-                    }, 2000); // setTimeout
-                }); // animate
+                                    // 10. 다음버튼 보이기 : '치료주사방으로'
+                                    btns.eq(5).slideDown(300);
 
-            }); // fadeIn
+                                }, 2000); // setTimeout
+                            }); // animate
 
-         }); // animate
- 
+                    }); // fadeIn
+
+            }); // animate
+
 
     }); // 3-5. '무서우니 윗층으로' 버튼 click 끝
 
     // 3-6. '치료주사방으로' 버튼 클릭시
-    btns.eq(5).click(function(){
+    btns.eq(5).click(function () {
         console.log($(this).text(), "버튼");
 
-                // 1. 자기자신 버튼 없애기
-                $(this).slideUp(200);
+        // 1. 자기자신 버튼 없애기
+        $(this).slideUp(200);
 
-                // 2. 메시지 지우기
-                msg.fadeOut(200);
-        
-                // 3. 이동위치
-                 // 대상: 2번방
-                 let tg = bd.eq(2)
-                 let tgtop = tg.offset().top;
-                 let tgleft = tg.offset().left + win5;
-        
-                 // 4. 위치이동
-                 mi.animate({
-                     top: tgtop + "px",
-                     left: tgleft + "px"
-                 },1000,"easeOutElastic",()=>{ 
-                     // 5. 주사기 돌리기
-                     // 주의: transform은 animate에서 사용불가
-                     // transform은 transition사용
-                     $(".inj").css({
-                         transform:"rotate(-150deg)",
-                         transition:".5s ease-out 1s",
-                         zIndex:"9999" // 좀비보다 위
-                     }); // css
+        // 2. 메시지 지우기
+        msg.fadeOut(200);
 
-                     // 6. 주사놓은 후 (1.5초) 다시 미니언즈2(후유증)
-                     setTimeout(()=>{
+        // 3. 이동위치
+        // 대상: 2번방
+        let tg = bd.eq(2);
+        let tgtop = tg.offset().top;
+        let tgleft = tg.offset().left + win5;
 
-                        //  6-1. 미니언즈 흑백모드 풀기
-                        mi.css({filter:"grayscale(0%)"})
-                        // 6-2. 새로운 미니언즈 이미지 변경
-                        .find("img").attr("src","images/m2.png");
-                        // 6-3. 주사기 제거하기
-                        $(".inj").remove();
-                        // remove() 메소드는 태그를 지운다
+        // 4. 위치이동
+        mi.animate({
+            top: tgtop + "px",
+            left: tgleft + "px"
+        }, 1000, "easeOutElastic", () => {
 
-                        // 7. 메시지 보이기
-                        msg.text("치료완료!").fadeIn(200)
-                        .delay(1000).fadeIn(200,()=>{
-                            msg.html("이제, 조금만 더<br>가면 탈출이닷!")
-                        }); // fadeIn
+            // 5. 주사기 돌리기
+            // 주의: transform은 animate에서 사용불가
+            // transform은 transition사용
+            $(".inj").css({
+                transform: "rotate(-150deg)",
+                transition: ".5s ease-out 1s",
+                zIndex: "9999" // 좀비보다 위
+            }); // css
 
-                        // 8. 다음버튼 보이기 : '3번방으로'
-                        btns.eq(6).slideDown(400);
+            // 6. 주사놓은 후 (1.5초) 다시 미니언즈2(후유증)
+            setTimeout(() => {
 
-                     },1500); // setTimeout
+                //  6-1. 미니언즈 흑백모드 풀기
+                mi.css({
+                        filter: "grayscale(0%)"
+                    })
+                    // 6-2. 새로운 미니언즈 이미지 변경
+                    .find("img").attr("src", "images/m2.png");
+                // 6-3. 주사기 제거하기
+                $(".inj").remove();
+                // remove() 메소드는 태그를 지운다
 
-                 }); // animate
+                // 7. 메시지 보이기
+                msg.text("치료완료!").fadeIn(200)
+                    .delay(1000).fadeIn(200, () => {
+                        msg.html("이제, 조금만 더<br>가면 탈출이닷!")
+                    }); // fadeIn
+
+                // 8. 다음버튼 보이기 : '3번방으로'
+                btns.eq(6).slideDown(400);
+
+            }, 1500); // setTimeout
+
+        }); // animate
 
     }); // 3-6. '치료주사방으로' 버튼 click 끝
 
-        // 3-7. '3번방으로' 버튼클릭시
-        btns.eq(6).click(function(){
-            console.log($(this).text(), "버튼");
+    // 3-7. '3번방으로' 버튼클릭시
+    btns.eq(6).click(function () {
+        console.log($(this).text(), "버튼");
 
-             // 1. 자기자신 버튼 없애기
-            $(this).slideUp(200);
+        // 1. 자기자신 버튼 없애기
+        $(this).slideUp(200);
 
-            // 2. 메시지 지우기
-            msg.fadeOut(200);
+        // 2. 메시지 지우기
+        msg.fadeOut(200);
 
-            // 3. 이동위치
-            // 대상: 3번방
-             let tg = bd.eq(3)
-             let tgtop = tg.offset().top;
-             let tgleft = tg.offset().left + win5;
+        // 3. 이동위치
+        // 대상: 3번방
+        let tg = bd.eq(3);
+        let tgtop = tg.offset().top;
+        let tgleft = tg.offset().left + win5;
 
-            // 4. 위치이동
-            mi.animate({
-                top: tgtop + "px",
-                left: tgleft + "px"
-            },1000,()=>{
+        // 4. 위치이동
+        mi.animate({
+            top: tgtop + "px",
+            left: tgleft + "px"
+        }, 1000, () => {
 
-                // 5. 메시지 보이기
-                msg.text("어서 윗층으로 가자").fadeIn(200);
+            // 5. 메시지 보이기
+            msg.text("어서 윗층으로 가자").fadeIn(200);
 
-                // 6. 다음버튼 보이기 : '1번방으로'
-                btbs.eq(7).slideDown(300);
+            // 6. 다음버튼 보이기 : '1번방으로'
+            btns.eq(7).slideDown(300);
 
-            }); // animate
+        }); // animate
 
-            }); // 3-7. '3번방으로' 버튼 click 끝
+    }); // 3-7. '3번방으로' 버튼 click 끝
 
-            // 3-8. '1번방으로!' 버튼 클릭시 ///////
-    btns.eq(7).click(function(){
+    // 3-8. '1번방으로!' 버튼 클릭시 ///////
+    btns.eq(7).click(function () {
         console.log($(this).text(), "버튼");
 
         // 1. 자기자신 버튼 없애기
@@ -475,7 +496,7 @@ $(function () { ////////// jQB ///////////////////////////
         mi.animate({
             top: tgtop + "px",
             left: tgleft + "px"
-        },1000,()=>{
+        }, 1000, "easeInOutBack", () => {
 
             // 5. 메시지 보이기
             msg.text("이제 곧 탈출이닷!").fadeIn(200);
@@ -487,6 +508,106 @@ $(function () { ////////// jQB ///////////////////////////
         }); ///////// animate //////////////
 
     }); // 3-8. '1번방으로!' 버튼 click 끝 ///////
+
+    // 3-9. '헬기를 호출!' 버튼 클릭시 ///////
+    btns.last().click(function () {
+        console.log($(this).text(), "버튼");
+
+        // 1. 자기자신 버튼 없애기
+        $(this).slideUp(200);
+
+        // 2. 메시지 지우기
+        msg.fadeOut(200);
+
+        // 3. 이동위치
+        let tg = bd.eq(0); // 0번방
+        let tgtop = tg.offset().top; // 화면에서 top값
+        let tgleft = tg.offset().left + win5; // 화면에서 left값(보정)
+
+        // 4. 위치이동
+        mi.animate({
+            top: tgtop + "px",
+            left: tgleft + "px"
+        }, 1000, "easeInOutBack", () => {
+
+            // 5. 메시지 보이기
+            msg.text("도와줘요~!!!").fadeIn(200);
+
+            // 6. 좀비들 최총추적!!!
+            // -> 1번방에 숨겨진 좀비들 -> bd.eq(1).find(".mz")
+            bd.eq(1).find(".mz")
+                .fadeIn(200, function () { // 콜백함수
+
+                    // 6-1. 좀비들 움직이기
+                    $(this).animate({
+                        right: tg.width() * 1.3 + "px"
+                        // 오른쪽에서 li가로크기의 1.3배만큼 이동애니
+                    }, 5000, "easeInOutQuint"); ////// animate /////
+
+                    // 6-2. 헬기등장
+                    $(".heli").animate({
+                                left: "20%"
+                            }, 3000, "easeOutBack",
+                            function () { // 콜백함수
+
+                                // 7. 주인공이 헬기에 탄 이미지로 변경
+                                $(this).attr("src", "images/heli2.png");
+
+                                // 8. 주인공 지우기(헬기에 탔으니까)
+                                mi.hide(); // display: none처리됨
+
+                            }) // animate
+                        .delay(1000) // 9. 1초 기다림
+                        .animate({ // 10. 오른쪽 끝으로 이동
+                                left: "70%"
+                            }, 3000, "easeInOutQuart",
+                            function () { // 콜백함수
+
+                                // 11. 헬기 조종사가 좀비로 바뀐 이미지 변경
+                                $(this).attr("src", "images/heli3.png");
+
+                            }) // animate
+                        .animate({
+                                left: "100%"
+                            }, 10000, "easeInOutSine",
+                            function () { // 콜백함수
+
+                                // 13. 미리 지정한 class를 타이틀에 줘서 간판 떨어짐
+                                // 대상: .tit
+                                let tit = $(".tit");
+
+                                // 1단계 : 간판 떨어짐(.on)
+                                tit.addClass("on");
+
+                                // 2단계 : 3초후 간판떨어짐(.on2)
+                                setTimeout(() => {
+                                    // 추가 클래스 넣기
+                                    tit.addClass("on2");
+
+                                    // 건물 무너지기 클래스 넣기(.on)
+                                    // 대상: .building -> bd변수를 사용해 보자
+                                    // bd변수 -> .building list
+                                    // 한칸위 부모요소로 올라감 -> parent() 메소드
+                                    bd.parent().addClass("on");
+
+                                }, 3000); // setTimeout
+
+
+                                // 제이쿼리에서 클래스 조작하기
+                                // addClass(클래스명) - 클래스 넣기
+                                // removeClass(클래스명) - 클래스 지우기
+                                // toggleClass(클래스명) - 클래스 넣기/지우기
+                                // -> JS의 classList 객체의 add, remove, toggle과 유사
+
+                            }); // animate
+
+                }); // fadeIn
+
+        }); //////// animate //////////////
+
+    }); // 3-9. '헬기를 호출' 버튼 click 끝
+
+
 
 
 }); //////////////////// jQB ///////////////////////////
