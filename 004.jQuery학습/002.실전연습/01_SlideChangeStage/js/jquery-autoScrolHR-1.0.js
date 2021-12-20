@@ -1,4 +1,5 @@
-// 자동 스크롤 JS : jquery-autoScroll-1.0.js //
+// 자동 스크롤 JS : jquery-autoScrollHR-1.0.js //
+// 수평방향 자동스크롤
 
 /**************** 전역변수구역 ****************/
 // 1. 현재 페이지번호
@@ -148,13 +149,13 @@ $(function () { ////// jQB //////////////////////
             // console.log("페이지번호:", pno);
 
             //***************************
-            // 3. 페이지번호를 높이값에 곱하여 스크롤 이동하기
+            // 3. 페이지번호를 가로값에 곱하여 스크롤 이동하기
             // 이동높이값
-            let pos = $(window).height() * pno;
+            let pos = $(window).width() * pno;
             // console.log("이동값:", pos);
             // 이동애니메이션
             $("html,body").animate({
-                scrollTop: pos + "px"
+                scrollLeft: pos + "px"
             }, dur_sc, easing_sc);
             // dur_sc 상수에 공통시간설정
 

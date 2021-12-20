@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One Page - Auto Scroll</title>
+    <title>One Page - Auto Scroll Horizontal</title>
     <style>
         html,
         body {
@@ -55,14 +55,24 @@
             padding: 0;
             font-size: 100%;
         }
+        /* 페이지 최상위 부모박스 */
+        .wrap{
+            width: 700vw;
+            /* 보이는 화면의 7배 */
+            height: 100vh;
+            display: flex;
+        }
 
         /* 공통 class */
 
         /* 페이지 공통 class */
         .page {
+            flex: 1; /* 등분할 */
+            /* width, height 크기 설정 불필요 */
+
             /* 한페이지 보이는 화면 채우기 */
-            width: 100%;
-            height: 100%;
+            /* width: 100%;
+            height: 100%; */
             /* 
                 width: 100vw;
                 height: 100vh;
@@ -221,7 +231,7 @@
     </style>
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery-autoScroll-1.0.js"></script>
+    <script src="js/jquery-autoScrolHR-1.0.js"></script>
     <script>
         ///////////// 로딩구역 //////////////////////////////////
         $(function () { ////// jQB ///////////////////////////////
@@ -251,13 +261,13 @@
                 pno = idx;
 
                 //***************************
-                // 3. 페이지번호를 높이값에 곱하여 스크롤 이동하기
+                // 3. 페이지번호를 가로값에 곱하여 스크롤 이동하기
                 // 이동높이값
-                let pos = $(window).height() * pno;
+                let pos = $(window).width() * pno;
                 // console.log("이동값:", pos);
                 // 이동애니메이션
                 $("html,body").animate({
-                    scrollTop: pos + "px"
+                    scrollLeft: pos + "px"
                 }, dur_sc, easing_sc);
                 // dur_sc 상수에 공통시간설정
 
@@ -321,13 +331,15 @@
     </div>
 
     <!-- 2. 페이지영역 -->
-    <section id="pg1" class="page"></section>
-    <section id="pg2" class="page"></section>
-    <section id="pg3" class="page"></section>
-    <section id="pg4" class="page"></section>
-    <section id="pg5" class="page"></section>
-    <section id="pg6" class="page"></section>
-    <section id="pg7" class="page"></section>
+    <div class="wrap">
+        <section id="pg1" class="page"></section>
+        <section id="pg2" class="page"></section>
+        <section id="pg3" class="page"></section>
+        <section id="pg4" class="page"></section>
+        <section id="pg5" class="page"></section>
+        <section id="pg6" class="page"></section>
+        <section id="pg7" class="page"></section>
+    </div>
 
     <!-- 3. 인디케이터(위치표시자) -->
     <nav class="indic">

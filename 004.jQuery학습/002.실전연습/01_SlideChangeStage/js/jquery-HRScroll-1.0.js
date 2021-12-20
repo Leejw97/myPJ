@@ -1,18 +1,25 @@
-// 자동 스크롤 JS : jquery-autoScroll-1.0.js //
+// 자동 스크롤 JS : jquery-HRScroll-1.0.js //
+// 수평방향 스크롤링~!
 
 /**************** 전역변수구역 ****************/
-// 1. 현재 페이지번호
-let pno = 0;
-// 2. 전체 페이지수
-const totnum = 7;
-// 3. 광스크롤 상태변수
-let prot_sc = 0; //0-허용, 1-불허용
-// 4. 스크롤애니메이션 시간
-const dur_sc = 600;
-// 광스크롤 금지 시간, 스크롤애니시간
-// 5. 스크롤이징
-const easing_sc = "easeInOutQuint";
+// 1. 스크롤횟수
+let cnt_sc = 0;
+// 2. 이동단위(한번에 이동할 크기)
+const unit_sc = 200;
+// 3. 스크롤애니메이션 시간
+const tm_prot = 50;
+// 4. 스크롤이징
+const easing_sc = "easeOutQuint";
+// easeIn...으로 되는 시작시 천ㅊ너히는 적용하지 않는다
+// easeOut...으로 되는 끝날 때 천천히만 적용함(중요)
+// 5. 스크롤횟수 한계값 -> 페이지 전체크기로 체크
+let limit_sc;
+// 초기값 할당 반드시 로딩구역으로 쌈
+// $(()=>{}) 여기안에서 할당(중괄호생략함)
+$(() => limit_sc = $(".wrap").width());
 
+// 4. 스크롤애니메이션 시간
+const dur_sc = 2000;
 
 ////////////////// 로딩구역 ////////////////////
 $(function () { ////// jQB //////////////////////
@@ -71,9 +78,9 @@ $(function () { ////// jQB //////////////////////
         function (e) { // e - 이벤트 전달값
 
             // 광스크롤 금지 /////////
-            if (prot_sc) return; //돌아가
-            prot_sc = 1; //잠금
-            setTimeout(() => prot_sc = 0, dur_sc);
+            // if (prot_sc) return; //돌아가
+            // prot_sc = 1; //잠금
+            // setTimeout(() => prot_sc = 0, tm_prot);
             //////////////////////////////
             //-> 지정시간동안 스크롤막기
             //-> 지정시간은 dur_sc 상수로 관리함!
@@ -125,49 +132,52 @@ $(function () { ////// jQB //////////////////////
                     -> 대소문자 관계없이 'my'문자를 모두 찾아라!
 
             *****************************************/
-        //    console.log("브라우저정보:",navigator.userAgent);
-        //    console.log("정보여부:",
-        //    /firefox/i.test(navigator.userAgent));
+            //    console.log("브라우저정보:",navigator.userAgent);
+            //    console.log("정보여부:",
+            //    /firefox/i.test(navigator.userAgent));
 
-        // 파이어폭스 브라우저 이면 델타값 부호를 반대로 한다!
-        if(/firefox/i.test(navigator.userAgent)){
-            delta = -delta; // 변수앞에 마이너스는 부호반대!
-        } ////////////////// if /////////////////////
+            // 파이어폭스 브라우저 이면 델타값 부호를 반대로 한다!
+            if (/firefox/i.test(navigator.userAgent)) {
+                delta = -delta; // 변수앞에 마이너스는 부호반대!
+            } ////////////////// if /////////////////////
 
             //********************************/
             // 2. 방향에 따른 페이지 번호증감하기 ////
             if (delta < 0) { // 음수면 스크롤 아랫방향(다음페이지)
-                pno++;
-                if (pno === totnum) pno = totnum - 1; //끝번호에 고정
+                if (cnt_sc * unit_sc < limit_sc)
+                    cnt_sc++;
+                // 스크롤횟수*단위이동값 크기가 전체크기보다 작을 때 
             } //////// if ////////////
             else { // 양수면 스크롤 윗방향(이전페이지)
-                pno--;
-                if (pno === -1) pno = 0; //첫번호에 고정
+                cnt_sc--;
+                if (cnt_sc === -1) cnt_sc = 0; //첫번호에 고정
             } //////// else //////////
 
-            // console.log("페이지번호:", pno);
+            console.log("스크롤횟수:", cnt_sc);
+            console.log("전체페이지크기:", limit_sc);
 
             //***************************
-            // 3. 페이지번호를 높이값에 곱하여 스크롤 이동하기
+            // 3. 스크롤횟수를 단위이동값에 곱하여 스크롤 이동하기
             // 이동높이값
-            let pos = $(window).height() * pno;
+            let pos = unit_sc * cnt_sc;
             // console.log("이동값:", pos);
             // 이동애니메이션
-            $("html,body").animate({
-                scrollTop: pos + "px"
+            $("html,body").stop().animate({
+                scrollLeft: pos + "px"
             }, dur_sc, easing_sc);
             // dur_sc 상수에 공통시간설정
+            // stop() 메서드는 애니메이션이 큐에 쌓이는 것을 지워줌
 
             // ****************************************
             // 4. 클릭시 .gnb+.indic 의 li에 클래스 on넣기
-            $(".gnb li").eq(pno).addClass("on")
+            // $(".gnb li").eq(pno).addClass("on")
             // $(gnb전체li).eq(해당순번).클래스넣기("on")
-            .siblings().removeClass("on");
+            // .siblings().removeClass("on");
             // .다른형제들().클래스제거("on")
 
-            $(".indic li").eq(pno).addClass("on")
+            // $(".indic li").eq(pno).addClass("on")
             // $(indic전체li).eq(해당순번).클래스넣기("on")
-            .siblings().removeClass("on");
+            // .siblings().removeClass("on");
             // .다른형제들().클래스제거("on")
 
 
