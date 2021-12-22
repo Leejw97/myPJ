@@ -1,5 +1,33 @@
 // 보그 PJ 링크시스템 JS - linksys.js
 
+$(()=>{ // jQB
+
+    // 사이드 메뉴 클릭시 이동설정
+    // 대상: .smsub a
+    $(".smsub a").click(function(e){
+        // 기본이동막기
+        e.preventDefault();
+
+        // 1. 클릭된 a요소 글자 읽어오기
+        let txt = $(this).text();
+        console.log("메뉴:",txt);
+
+        // 2. 글자별로 분기하여 url 만들기
+        let url;
+        switch(txt){
+            case "보그 로그인": url="login.html"; break;
+            case "보그 회원가입": url="member.html"; break;
+            case "보그 갤러리": url="gallery.html"; break;
+        } // switch case
+
+        // 3. 페이지 이동하기
+        location.href = url;
+
+    }); // click
+
+}); // jQB
+
+
 // 로딩구역
 window.addEventListener("DOMContentLoaded", ()=>{
 
