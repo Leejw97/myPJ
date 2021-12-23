@@ -78,12 +78,86 @@ $(()=>{ // jQB
 
         // 검사결과 통과이면
         else{
-            // 원래 아이디 중복여부 판단 해야함
-            $(this).siblings(".msg")
-            .text("사용가능한 아이디")
-            .addClass("on");
-            // 글자색 변경 클래스주기(녹색글자)
-        } // else
+            // 아이디 중복여부 판단
+            /***************************** 
+                [Ajax로 중복아이디 검사하기]
+                ajax 처리유형 2가지
+
+                1) post 방식 처리 메소드
+                - $.post(URL,data,callback)
+
+                2) get 방식 처리 메소드
+                - $get(URL,callback)
+                - URL에 데이터가 포함됨
+
+                3) 위의 2가지 유형 중 선택처리 메소드
+                - $.ajax(
+                    1.전송할페이지,
+                    2.전송방식,
+                    3.보낼데이터,
+                    4.전송할데이터타입,
+                    5.비동기옵션,
+                    6.성공처리,
+                    7.실패처리)
+
+            *****************************/
+
+                    - $.ajax({
+                        // 1.전송할페이지
+                        url:"process/chkID.php",
+                        // 2.전송방식(get/post)
+                        type:"post",
+                        // 3.보낼데이터
+                        data:{
+                            "mid":$("#mid").val()
+                        },
+                        // 4.전송할데이터타입
+                        dataType:"html",
+                        // 5.비동기옵션                      
+                        // 비동기 옵션을 끄는 것(fasle)의 의미는
+                        // 현재 JS파일과 동기화를 하여 전역변수값인
+                        // pass를 업데이트 해야 하므로 이것을 false로
+                        // 설정해야 제대로 된 유효성 검사 결과가 나온다
+                        // 만약 true로 하면 pass=false가 설정안되기 때문에
+                        // 사용중인 ID일 경우에도 데이터가 입력되는 문제가
+                        // 발생된다 (경고창이 콘솔에 떠도 false로 쓸 것)
+                        async:false,
+
+                        // 6.성공처리
+                        success: function (res) {
+                            console.log("결과:",res);
+                            //res 전달변수(ok-성공,no-실패)
+                            if(res==="ok"){ // 사용가능
+
+                                $("#mid").siblings(".msg")
+                                .text("사용가능한 아이디")
+                                .addClass("on");
+                                // 글자색 변경 클래스주기(녹색글자)
+
+                            } //if
+
+                            else{ // 사용불가
+
+                                $("#mid").siblings(".msg")
+                                .text("사용중인 ID입니다")
+                                .removeClass("on"); // 글자색 복원
+
+                                // 불통과 상태값 변경
+                                pass = false;
+
+                            } // else
+                        },
+                        // 7.실패처리
+                        // xhr - XHTMLttpRequset객체
+                        // status - 실패상캐도브번호
+                        // error - 에러결과값
+                        error: function(xhr,status,error){
+                            alert("연결실행실패:"+error);
+                        }// error
+                    }); // ajax 메소드
+
+                   
+   } // else
 
         } // else if : 아이디일 경우
 

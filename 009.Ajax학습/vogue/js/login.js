@@ -27,9 +27,47 @@ $(()=>{ // jQB
             mid.focus(); // 아이디입력란 포커스
         } // if
         else{
-            alert("로그인에 성공하였습니다.")
             // 실제로 서버에 가서 아이디/비번확인 후
             // 일치하면 로그인성공, 불일치하면 메시지
+
+            // Ajax의 post방식으로 로그인페이지 호출
+            // $.post(URL,data,callback);
+            $.post(
+                // 1.URL
+                "process/loginSet.php",
+                // 2.data
+                {
+                    "mid": mid.val(), // 아이디
+                    "mpw": mpw.val() // 비밀번호
+                },
+                // 3. callback
+                    function(res){ // res 전달변수
+                        console.log("결과값:",res);
+
+                        // 3-1. 로그인성공시
+                        if(res==="ok"){
+                            // alert("로그인에 성공하였습니다.");
+
+                            // 메인페이지로 이동하기
+                            location.href = "index.php";
+                            
+                        } // if
+
+                        // 3-2. 아이디가 없는경우
+                        else if(res==="no"){
+                            alert("사용가능한 ID가 아닙니다");
+
+                        } // else if
+
+                        // 3-3. 비밀번호가 불일치
+                        else if(res==="again"){
+                            alert("비밀번호가 일치하지 않습니다");
+
+                        } // else if
+
+                    } // callback
+            );
+
         } //else
 
     }); // click
